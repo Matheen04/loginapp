@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import Dashboard from './Dashboard';
 
 
 class LoginPage extends Component {
@@ -31,7 +32,8 @@ onSubmit(e){
 
  render() {
     return (
-      <form onSubmit = {this.onSubmit}>
+      <div>
+        {this.state.login!=='successful' && <form onSubmit = {this.onSubmit}>
         <h1>Login Page</h1>
         <div className = "form-group">
           <label className = "control-label">Username</label>
@@ -55,9 +57,12 @@ onSubmit(e){
         </div>
 
         <div className = "form-group">
-          <Link to="/dashboard" className = "btn btn-primary btn-lg">Login</Link>
+          <button to="/dashboard" className = "btn btn-primary btn-lg">Login</button>
         </div>
-      </form>
+      </form>}
+      {this.state.login === 'successful' && <Dashboard />}
+      
+      </div>
     );
   }
 }
