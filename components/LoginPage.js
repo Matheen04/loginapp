@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Dashboard from './Dashboard';
+import PropTypes from 'prop-types';
 
 
 class LoginPage extends Component {
@@ -76,5 +77,8 @@ const mapStateToProps = (state, props) => {
       data : state
   }
 }
+LoginPage.prototypes = {
+  data : PropTypes.array
+};
 
 export default connect(mapStateToProps)(LoginPage);
