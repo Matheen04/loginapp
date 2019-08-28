@@ -11,7 +11,8 @@ constructor(props){
   this.state = {
     username: '',
     password: '',
-    login: ''
+    login: '',
+    error:''
   }
   this.onChange = this.onChange.bind(this);
   this.onSubmit = this.onSubmit.bind(this);
@@ -24,7 +25,9 @@ onChange(e){
 onSubmit(e){
   e.preventDefault();
   if(this.state.username === this.props.data[0].username && this.state.password === this.props.data[0].password){
-    this.setState({login : "successful"})
+    this.setState({login : "successful",error: ''})
+  }else{
+    this.setState({login : "unsuccessful",error: 'Invalid Entry'})
   }
   
 }
@@ -60,8 +63,8 @@ onSubmit(e){
           <button to="/dashboard" className = "btn btn-primary btn-lg">Login</button>
         </div>
       </form>}
+      <h6>{this.state.error}</h6>
       {this.state.login === 'successful' && <Dashboard />}
-      
       </div>
     );
   }
